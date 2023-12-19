@@ -1,0 +1,67 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	OwnerPIN pin;
+
+
+----------------------------
+
+
+byte[] pincode = {(byte)0x30,(byte)0x30,(byte)0x30,(byte)0x30}; // PIN code "0000"
+pin = new OwnerPIN((byte)3,(byte)8);  			// 3 tries 8=Max Size
+pin.update(pincode,(short)0,(byte)4); 			// from pincode, offset 0, length 4
+
+---------------------------
+
+	if ( pin.getTriesRemaining() == 0 )
+		return false;
+	else
+
+
+
+--------------------------
+
+
+
+	pin.reset();   
+
+
+-------------------------
+
+
+
+case PIN_VERIFY:
+		verify( apdu );
+		break;
+
+-----------------------
+
+if ( ! pin.isValidated() )
+		ISOException.throwIt(SW_PIN_VERIFICATION_REQUIRED);
+
+
+
